@@ -1,0 +1,59 @@
+<!-- src/app/components/header/header.component.html -->
+<!-- src/app/components/header/header.component.html -->
+<!-- src/app/components/header/header.component.html -->
+<header class="header">
+  <div class="logo">🔳 <span>EMUMBA</span></div>
+
+  <div class="search-box">
+    <nz-input-group [nzPrefix]="prefixSearch">
+      <!-- Bind input value and listen for changes -->
+      <input
+        type="text"
+        nz-input
+        placeholder="Search gists..."
+        [(ngModel)]="searchTerm"
+        (input)="onSearchInputChange($event)"
+      />
+    </nz-input-group>
+    <ng-template #prefixSearch>
+      <span class="search-icon">🔍</span>
+    </ng-template>
+  </div>
+
+  <!-- Conditionally display login button or avatar/menu -->
+  <button nz-button nzType="primary" *ngIf="!isLoggedIn" (click)="login()">
+    Login
+  </button>
+
+  <div class="user-menu" *ngIf="isLoggedIn && user">
+    <div
+      nz-dropdown
+      [nzDropdownMenu]="userMenu"
+      nzPlacement="bottomRight"
+      nzTrigger="click"
+    >
+      <nz-avatar
+        [nzSrc]="user.avatar_url"
+        nzText="{{ user.login }}"
+        nzSize="large"
+        style="cursor: pointer"
+      ></nz-avatar>
+    </div>
+    <nz-dropdown-menu #userMenu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item>
+          Signed in as <strong>{{ user.login }}</strong>
+        </li>
+        <li nz-menu-divider></li>
+        <li nz-menu-item [routerLink]="'/profile'">Your gists</li>
+        <li nz-menu-item [routerLink]="'/starredGists'">Starred gists</li>
+        <li nz-menu-item [routerLink]="'/createGist'">Create gist</li>
+        <li nz-menu-item [routerLink]="'/'">Public gists</li>
+        <li nz-menu-item>Your GitHub profile</li>
+        <li nz-menu-item>Help</li>
+        <li nz-menu-divider></li>
+        <li nz-menu-item (click)="logout()">Sign out</li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
+</header>

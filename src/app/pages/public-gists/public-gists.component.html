@@ -1,0 +1,134 @@
+<h2>Public Gists</h2>
+<div class="view-toggle">
+  <button
+    [class.active]="viewMode === 'table'"
+    (click)="viewMode = 'table'"
+    title="Table View"
+  >
+    📋
+  </button>
+  <button
+    [class.active]="viewMode === 'grid'"
+    (click)="viewMode = 'grid'"
+    title="Grid View"
+  >
+    🗂️
+  </button>
+</div>
+<div class="gist-table-container">
+  <nz-table
+    [nzData]="gists"
+    [nzBordered]="false"
+    [nzShowPagination]="false"
+    [nzLoading]="loading"
+    [nzPageSize]="pageSize"
+    [nzPageIndex]="pageIndex"
+    (nzPageIndexChange)="onPageIndexChange($event)"
+    [nzTotal]="total"
+    [nzShowSizeChanger]="false"
+    [nzShowQuickJumper]="false"
+    [nzShowTotal]="null"
+    [nzFrontPagination]="false"
+    *ngIf="viewMode === 'table'"
+  >
+    <thead>
+      <tr>
+        <th>Owner</th>
+        <th>Description</th>
+        <th>Files</th>
+        <th>Updated</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let gist of gists">
+        <td>
+          <nz-avatar
+            [nzSrc]="gist.owner?.avatar_url"
+            class="avatar"
+          ></nz-avatar>
+          <span class="name">{{ gist.owner?.login }}</span>
+        </td>
+        <td>{{ gist.description || "No description" }}</td>
+        <td>
+          <nz-tag *ngFor="let file of gist.files | keyvalue">
+            {{ file.value.filename }}
+          </nz-tag>
+        </td>
+        <td>{{ gist.updated_at | date : "medium" }}</td>
+        <td class="icons">
+          <button
+            nz-button
+            nzType="text"
+            (click)="onFork(gist); $event.stopPropagation()"
+          >
+            <!-- <i nz-icon [nzType]="icons.ForkOutline"></i> -->
+            {{ isForked(gist.id) ? "Forked" : "🍴" }}
+          </button>
+          <button
+            nz-button
+            nzType="text"
+            (click)="onStar(gist); $event.stopPropagation()"
+          >
+            <!-- <i
+              nz-icon
+              [nzType]="isStarred(gist.id) ? icons.StarFill : icons.StarOutline"
+              [class.starred]="isStarred(gist.id)"
+            ></i> -->
+            {{ isStarred(gist.id) ? "⭐" : "☆" }}
+          </button>
+        </td>
+        <td class="view-details">
+          <a [routerLink]="'/gist/' + gist.id" class="view-link"
+            >View Details</a
+          >
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <app-gist-grid
+    *ngIf="viewMode === 'grid'"
+    [gists]="gists"
+    (star)="onStar($event)"
+    (fork)="onFork($event)"
+  >
+  </app-gist-grid>
+</div>
+
+<!-- Add the single, shared nz-pagination component here -->
+<nz-pagination
+  [nzPageIndex]="pageIndex"
+  [nzTotal]="1000"
+  [nzPageSize]="pageSize"
+  (nzPageIndexChange)="onPageIndexChange($event)"
+  [nzShowSizeChanger]="false"
+  [nzShowQuickJumper]="false"
+></nz-pagination>
+
+<button nz-button (click)="testAuth()">Test Authentication</button>
+
+<style>
+  /* Keep your existing icons styles */
+  .icons {
+    .action-link {
+      margin-right: 10px;
+      color: #666;
+      font-size: 18px;
+
+      &:hover {
+        color: #1890ff;
+      }
+    }
+  }
+
+  /* Add or adjust styles for the separate pagination component if needed */
+  .ant-pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 10;
+  }
+</style>

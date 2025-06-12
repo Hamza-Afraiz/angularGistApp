@@ -1,0 +1,154 @@
+h2 {
+  margin: 2rem 4rem;
+  font-size: 24px;
+  font-weight: 500;
+  color: #1f1f1f;
+}
+
+.avatar {
+  margin-right: 8px;
+  vertical-align: middle;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 2px solid #f0f0f0;
+  border-radius: 50%;
+}
+
+.name {
+  vertical-align: middle;
+  font-weight: 500;
+  color: #333;
+}
+
+.icons {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  font-size: 18px;
+  color: #555;
+
+  .action-link {
+    margin-right: 8px;
+    color: rgba(0, 0, 0, 0.45);
+    &:hover {
+      color: #1890ff;
+    }
+  }
+
+  button {
+    i.starred {
+      color: #fadb14;
+    }
+  }
+}
+
+nz-tag {
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background: #f5f5f5;
+  color: #1890ff;
+  border: none;
+  font-weight: 500;
+}
+
+td {
+  vertical-align: middle;
+}
+
+::ng-deep {
+  .ant-table {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    .ant-table-thead > tr > th {
+      background: #fafafa;
+      font-weight: 500;
+      color: #1f1f1f;
+      padding: 16px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .ant-table-tbody > tr > td {
+      padding: 16px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #fafafa;
+      }
+    }
+
+    .ant-table-tbody > tr:last-child > td {
+      border-bottom: none;
+    }
+  }
+
+  .ant-pagination {
+    margin: 16px 0;
+
+    .ant-pagination-item {
+      border-radius: 4px;
+
+      &:hover {
+        border-color: #1890ff;
+      }
+
+      &-active {
+        background: #1890ff;
+        border-color: #1890ff;
+
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.gist-table-container {
+  margin: 2rem 4rem;
+}
+.pagination-controls {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  .page-number {
+    font-size: 14px;
+  }
+}
+.view-toggle {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+
+  button {
+    border: 1px solid #d9d9d9;
+    background-color: #f5f5f5;
+    padding: 5px 10px;
+    margin-left: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+
+    &.active {
+      background-color: #1890ff;
+      color: #fff;
+      border-color: #1890ff;
+    }
+
+    &:hover {
+      background-color: #e6f7ff;
+    }
+  }
+}
+
+.gist-actions {
+  button {
+    i.starred {
+      color: #fadb14;
+    }
+  }
+}

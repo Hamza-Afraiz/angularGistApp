@@ -1,0 +1,35 @@
+// src/app/pages/starred-gists/starred-gists.component.scss
+.profile-card {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .profile-avatar-container {
+    margin-bottom: 16px;
+  }
+  
+  .profile-name {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .gists-section {
+    .section-title {
+      margin-bottom: 24px;
+      font-size: 24px;
+      font-weight: 500;
+  
+      .gist-count {
+        font-size: 16px;
+        color: #666;
+        margin-left: 8px;
+      }
+    }
+  }
+  
+  .pagination-container {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+  }

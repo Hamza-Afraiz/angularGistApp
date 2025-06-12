@@ -1,0 +1,100 @@
+.gist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // Responsive
+  gap: 16px;
+  padding: 16px;
+}
+
+.gist-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.gist-content {
+  margin-bottom: 8px;
+
+  ngx-monaco-editor {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .file-label {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #888;
+  }
+  pre {
+    background-color: #f5f5f5; // Light grey background
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto; // Enable horizontal scrolling for long lines
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace; // Monospaced font
+    font-size: 13px;
+    line-height: 1.5;
+    color: #333; // Dark grey text color
+    margin: 0; // Remove default margin
+    max-height: 17rem; // Limit height and add vertical scroll if needed
+    overflow-y: auto;
+    min-height: 17rem;
+  }
+
+  code {
+    /* Styles for code tag if needed, often inherited from pre */
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+  }
+}
+
+.gist-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-bottom: 4px;
+  }
+
+  .name {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .desc {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+
+    button {
+      border: none;
+      background: #f0f0f0;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #e6f7ff;
+      }
+
+      i.starred {
+        color: #fadb14; // Ant Design's star color
+      }
+    }
+  }
+}

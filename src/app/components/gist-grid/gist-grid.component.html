@@ -1,0 +1,32 @@
+<div class="gist-grid">
+  <div
+    class="gist-card"
+    *ngFor="let gist of gists"
+    [routerLink]="'/gist/' + gist.id"
+    style="cursor: pointer"
+  >
+    <!-- Get the first file -->
+    <div class="gist-content" *ngIf="getFirstFile(gist) as file">
+      <pre><code style="height: 180px" class="language-{{ file.language || 'plaintext' }}">{{ file.content }}</code></pre>
+
+      <div class="file-label">
+        <span>View {{ file.filename }}</span>
+      </div>
+    </div>
+
+    <div class="gist-meta">
+      <img [src]="gist.owner?.avatar_url" class="avatar" />
+      <span class="name">{{ gist.owner?.login }}</span>
+      <span class="desc">{{ gist.description || "No description" }}</span>
+    </div>
+
+    <div class="gist-actions">
+      <button nz-button nzType="text" (click)="onFork(gist, $event)">
+        {{ isForked(gist.id) ? "Forked" : "🍴" }}
+      </button>
+      <button nz-button nzType="text" (click)="onStar(gist, $event)">
+        {{ isStarred(gist.id) ? "⭐" : "☆" }}
+      </button>
+    </div>
+  </div>
+</div>

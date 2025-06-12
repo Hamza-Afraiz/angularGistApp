@@ -1,0 +1,38 @@
+
+<!-- src/app/pages/starred-gists/starred-gists.component.html -->
+<div nz-row [nzGutter]="24">
+    <div nz-col [nzXs]="24" [nzSm]="8" [nzMd]="6">
+      <nz-card class="profile-card">
+        <div class="profile-avatar-container">
+          <nz-avatar
+            [nzSize]="120"
+            src="https://avatars.githubusercontent.com/u/51757250?v=4"
+          ></nz-avatar>
+        </div>
+        <h2 class="profile-name">Starred Gists</h2>
+      </nz-card>
+    </div>
+    <div nz-col [nzXs]="24" [nzSm]="16" [nzMd]="18">
+      <div class="gists-section">
+        <h2 class="section-title">
+          Starred Gists <span class="gist-count">{{ totalGists }}</span>
+        </h2>
+        <nz-spin [nzSpinning]="loading">
+          <app-gist-grid
+            [gists]="gists"
+            (star)="onStar($event)"
+            (fork)="onFork($event)"
+          ></app-gist-grid>
+        </nz-spin>
+        <div class="pagination-container">
+          <nz-pagination
+            [nzPageIndex]="currentPage"
+            [nzPageSize]="pageSize"
+            [nzTotal]="totalGists"
+            (nzPageIndexChange)="onPageIndexChange($event)"
+            nzShowSizeChanger
+          ></nz-pagination>
+        </div>
+      </div>
+    </div>
+  </div>

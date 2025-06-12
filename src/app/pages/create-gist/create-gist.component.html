@@ -1,0 +1,43 @@
+<!-- src/app/pages/create-gist/create-gist.component.html -->
+<div class="create-gist-container">
+    <h2>Create Gist</h2>
+    <p class="description">This is a Git Description</p>
+    <form [formGroup]="gistForm" (ngSubmit)="submit()">
+      <div formArrayName="files">
+        <div
+          *ngFor="let file of files.controls; let i = index"
+          [formGroupName]="i"
+          class="file-block"
+        >
+          <div class="file-header">
+            <input
+              formControlName="filename"
+              placeholder="Filename including extension..."
+              class="filename-input"
+            />
+            <button
+              type="button"
+              class="delete-btn"
+              (click)="removeFile(i)"
+              [disabled]="files.length === 1"
+              aria-label="Remove file"
+            >
+              🗑️
+            </button>
+          </div>
+          <textarea
+            formControlName="content"
+            placeholder="File content..."
+            class="file-content"
+            rows="6"
+          ></textarea>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" class="add-file-btn" (click)="addFile()">Add file</button>
+        <button type="submit" class="create-gist-btn" [disabled]="loading">
+          Create Gist
+        </button>
+      </div>
+    </form>
+  </div>

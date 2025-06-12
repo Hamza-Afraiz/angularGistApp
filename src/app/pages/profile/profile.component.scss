@@ -1,0 +1,35 @@
+.profile-card {
+  text-align: center;
+  padding: 24px;
+
+  .profile-avatar-container {
+    margin-bottom: 16px;
+  }
+
+  .profile-name {
+    margin-bottom: 16px;
+  }
+}
+
+.gists-section {
+  .section-title {
+    margin-bottom: 24px;
+
+    .gist-count {
+      color: #8c8c8c;
+      font-size: 0.9em;
+    }
+  }
+
+  .pagination-container {
+    margin-top: 24px;
+    text-align: center;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .profile-card {
+    margin-bottom: 24px;
+  }
+}

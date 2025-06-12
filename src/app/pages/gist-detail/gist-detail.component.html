@@ -1,0 +1,51 @@
+<div class="gist-detail-container">
+  <nz-spin [nzSpinning]="loading" nzTip="Loading Gist...">
+    <div *ngIf="gist" class="gist-content-wrapper">
+      <nz-card class="gist-header-card">
+        <div class="gist-owner-info">
+          <nz-avatar
+            [nzSrc]="gist.owner?.avatar_url"
+            nzSize="large"
+          ></nz-avatar>
+          <div class="owner-details">
+            <h2 class="owner-name">
+              {{ gist.owner?.login }} /
+              <strong>{{ gist.description || "Untitled Gist" }}</strong>
+            </h2>
+            <p class="gist-meta-info">
+              Created {{ gist.updated_at | date : "mediumDate" }}
+            </p>
+          </div>
+        </div>
+        <div class="gist-actions">
+          <button nz-button (click)="onFork(gist)" *ngIf="!isUserGist(gist.id)">
+            {{ isForked(gist.id) ? "Forked" : "🍴" }}
+          </button>
+          <button nz-button (click)="onStar(gist)">
+            {{ isStarred(gist.id) ? "⭐" : "☆" }}
+          </button>
+        </div>
+      </nz-card>
+
+      <div class="gist-files-container">
+        <nz-card
+          *ngFor="let file of gist.files | keyvalue"
+          class="gist-file-card"
+        >
+          <div class="file-header">
+            <h3>{{ file.value.filename }}</h3>
+            <span class="file-language">{{
+              file.value.language || "Plain Text"
+            }}</span>
+          </div>
+          <div class="file-code-display">
+            <pre><code class="language-{{ file.value.language || 'plaintext' }}">{{ file.value.content }}</code></pre>
+          </div>
+        </nz-card>
+      </div>
+    </div>
+    <div *ngIf="!gist && !loading" class="no-gist-found">
+      <p>No Gist found or an error occurred.</p>
+    </div>
+  </nz-spin>
+</div>

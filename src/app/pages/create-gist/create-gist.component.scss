@@ -1,0 +1,120 @@
+// src/app/pages/create-gist/create-gist.component.scss
+
+.create-gist-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    padding: 32px 40px 24px 40px;
+  
+    h2 {
+      margin-bottom: 0.5rem;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #1a3c4b;
+    }
+  
+    .description {
+      color: #6b7a86;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  
+    .file-block {
+      background: #fafbfc;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 1.5rem;
+      position: relative;
+  
+      .file-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+  
+        .filename-input {
+          flex: 1;
+          padding: 8px 12px;
+          border: 1px solid #d1d5da;
+          border-radius: 4px;
+          font-size: 1rem;
+        }
+  
+        .delete-btn {
+          background: none;
+          border: none;
+          color: #e74c3c;
+          font-size: 1.3rem;
+          margin-left: 10px;
+          cursor: pointer;
+          transition: color 0.2s;
+          &:hover {
+            color: #c0392b;
+          }
+          &:disabled {
+            color: #ccc;
+            cursor: not-allowed;
+          }
+        }
+      }
+  
+      .file-content {
+        width: 100%;
+        font-family: 'Fira Mono', 'Consolas', monospace;
+        font-size: 1rem;
+        padding: 10px;
+        border: 1px solid #d1d5da;
+        border-radius: 4px;
+        background: #fff;
+        resize: vertical;
+      }
+    }
+  
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+  
+      .add-file-btn {
+        background: #f3f4f6;
+        color: #1a3c4b;
+        border: 1px solid #d1d5da;
+        border-radius: 4px;
+        padding: 8px 18px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.2s;
+        &:hover {
+          background: #e1e4e8;
+        }
+      }
+  
+      .create-gist-btn {
+        background: #005c5c;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 28px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+        &:hover {
+          background: #004747;
+        }
+        &:disabled {
+          background: #b2bec3;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
