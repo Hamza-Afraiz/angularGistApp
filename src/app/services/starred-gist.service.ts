@@ -35,6 +35,7 @@ export class StarredGistService {
   // Method to star a gist
   starGist(gistId: string): Observable<any> {
 
+
     return this.http
       .put(`${this.baseUrl}/gists/${gistId}/star`, null, {
         observe: 'response',
